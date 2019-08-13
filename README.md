@@ -5,9 +5,19 @@ Very primitive Python-based Geant4 simulation of particle interactions in liquid
  * ROOT
  * Geant4
  * g4py (which requires boost and XercesC)
+ 
+ A docker image which sets up the correct environment with the above mentioned packages is available at docker hub: zoyavallari/g4pybuild .
+ This image on the docker hub can be used to build a container with any container platform such as docker, singularity or shifter.
+ > $ docker pull zoyavallari/g4pybuild
+
+or
+
+> $ singularity build container_name.sif docker://zoyavallari/g4pybuild
+
+A volume that contains argon_box code should be bound to the container.
+The dockerfile itself is available at: https://github.com/zoyavallari/ContainerFiles/blob/master/g4pyenv.dockerfile
 
 ## Example Usage:
-
 Mono-energetic particles:
 >  $ python argon_box.py --nevents=100 --source='e-' --energy=2.0 --output='electron_2GeV_sim.root'
 
